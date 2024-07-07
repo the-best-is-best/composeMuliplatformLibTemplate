@@ -169,7 +169,7 @@ kotlin {
 }
 
 android {
-    namespace = "io.gitub.io"
+    namespace = "io.github.lib"
     compileSdk = 34
 
     defaultConfig {
@@ -191,7 +191,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "io.gitub.io.desktopApp"
+            packageName = "io.github.lib.desktopApp"
             packageVersion = "1.0.0"
         }
     }
