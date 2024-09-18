@@ -76,6 +76,10 @@ mavenPublishing {
 }
 
 
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
+}
 
 
 kotlin {
