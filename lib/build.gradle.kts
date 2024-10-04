@@ -3,9 +3,9 @@ import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform.getCurr
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -38,42 +38,42 @@ tasks.withType<PublishToMavenRepository> {
     }
 }
 
-
-
-mavenPublishing {
-    coordinates("${groupId}", "${artifacts}", ${version})
-
-    publishToMavenCentral(SonatypeHost.S01)
-    signAllPublications()
-
-    pom {
-        name.set("${lib.name}")
-        description.set("${lib.description}")
-        url.set("${lib.url}")
-        licenses {
-            license {
-                name.set("Apache-2.0")
-                url.set("https://opensource.org/licenses/Apache-2.0")
-            }
-        }
-        issueManagement {
-            system.set("${github}")
-            url.set("${lib.issue.github}")
-        }
-        scm {
-            connection.set("${lib.github.git}")
-            url.set("${lib.url}")
-        }
-        developers {
-            developer {
-                id.set("${lib.developer.nameId}")
-                name.set("${lib.developer.name}")
-                email.set("${lib.developer.name}")
-            }
-        }
-    }
-
-}
+//
+//
+//mavenPublishing {
+//    coordinates("${groupId}", "${artifacts}", ${version})
+//
+//    publishToMavenCentral(SonatypeHost.S01)
+//    signAllPublications()
+//
+//    pom {
+//        name.set("${lib.name}")
+//        description.set("${lib.description}")
+//        url.set("${lib.url}")
+//        licenses {
+//            license {
+//                name.set("Apache-2.0")
+//                url.set("https://opensource.org/licenses/Apache-2.0")
+//            }
+//        }
+//        issueManagement {
+//            system.set("${github}")
+//            url.set("${lib.issue.github}")
+//        }
+//        scm {
+//            connection.set("${lib.github.git}")
+//            url.set("${lib.url}")
+//        }
+//        developers {
+//            developer {
+//                id.set("${lib.developer.nameId}")
+//                name.set("${lib.developer.name}")
+//                email.set("${lib.developer.name}")
+//            }
+//        }
+//    }
+//
+//}
 
 
 signing {
