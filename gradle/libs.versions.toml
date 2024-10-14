@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.0.21"
-compose = "1.7.0-beta02"
+compose = "1.7.0-rc01"
 agp = "8.7.0"
 androidx-activityCompose = "1.9.2"
 androidx-uiTest = "1.7.3"
@@ -9,8 +9,8 @@ maven-publish = "0.29.0"
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
-androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
+androidx-uitest-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
+androidx-uitest-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 
 [plugins]
 
