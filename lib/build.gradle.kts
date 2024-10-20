@@ -6,7 +6,6 @@ import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
@@ -40,42 +39,61 @@ tasks.withType<PublishToMavenRepository> {
     }
 }
 
-//
-//
-//mavenPublishing {
-//    coordinates("${groupId}", "${artifacts}", ${version})
-//
-//    publishToMavenCentral(SonatypeHost.S01)
-//    signAllPublications()
-//
-//    pom {
-//        name.set("${lib.name}")
-//        description.set("${lib.description}")
-//        url.set("${lib.url}")
-//        licenses {
-//            license {
-//                name.set("Apache-2.0")
-//                url.set("https://opensource.org/licenses/Apache-2.0")
-//            }
-//        }
-//        issueManagement {
-//            system.set("${github}")
-//            url.set("${lib.issue.github}")
-//        }
-//        scm {
-//            connection.set("${lib.github.git}")
-//            url.set("${lib.url}")
-//        }
-//        developers {
-//            developer {
-//                id.set("${lib.developer.nameId}")
-//                name.set("${lib.developer.name}")
-//                email.set("${lib.developer.name}")
-//            }
-//        }
-//    }
-//
-//}
+
+
+extra["groupId"] = "com.example"
+extra["artifactId"] = "your-artifact-id"
+extra["version"] = "1.0.0"
+extra["packageName"] = ""
+extra["packageUrl"] = ""
+extra["packageDescription"] = ""
+extra["system"] = "GITHUB"
+extra["issueUrl"] = ""
+extra["connectionGit"] = ".git"
+
+extra["developerName"] = ""
+extra["developerNameId"] = ""
+extra["developerEmail"] = ""
+
+
+mavenPublishing {
+    coordinates(
+        extra["groupId"].toString(),
+        extra["artifactId"].toString(),
+        extra["version"].toString()
+    )
+
+    publishToMavenCentral(SonatypeHost.S01)
+    signAllPublications()
+
+    pom {
+        name.set(extra["packageName"].toString())
+        description.set(extra["packageDescription"].toString())
+        url.set(extra["packageUrl"].toString())
+        licenses {
+            license {
+                name.set("Apache-2.0")
+                url.set("https://opensource.org/licenses/Apache-2.0")
+            }
+        }
+        issueManagement {
+            system.set(extra["system"].toString())
+            url.set(extra["issueUrl"].toString())
+        }
+        scm {
+            connection.set(extra["connectionGit"].toString())
+            url.set(extra["packageUrl"].toString())
+        }
+        developers {
+            developer {
+                id.set(extra["developerNameId"].toString())
+                name.set(extra["developerName"].toString())
+                email.set(extra["developerEmail"].toString())
+            }
+        }
+    }
+
+}
 
 
 signing {

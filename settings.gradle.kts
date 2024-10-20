@@ -32,4 +32,3 @@ dependencyResolutionManagement {
 }
 include(":lib")
 include(":simple:composeApp")
-
