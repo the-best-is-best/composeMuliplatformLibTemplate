@@ -40,7 +40,7 @@ tasks.withType<PublishToMavenRepository> {
 }
 
 
-
+extra["packageNameSpace"] = ""
 extra["groupId"] = "com.example"
 extra["artifactId"] = "your-artifact-id"
 extra["version"] = "1.0.0"
@@ -128,7 +128,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "lib"
+            baseName = extra["packageNameSpace"].toString()
             isStatic = true
         }
     }
@@ -169,7 +169,7 @@ kotlin {
 
 
 android {
-    namespace = "org.company.app"
+    namespace = extra["packageNameSpace"].toString()
     compileSdk = 35
 
     defaultConfig {
@@ -201,7 +201,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "ComposeApp"
+            packageName = extra["packageNameSpace"].toString()
             packageVersion = "1.0.0"
 
             linux {
