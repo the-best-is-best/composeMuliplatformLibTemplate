@@ -194,14 +194,14 @@ dependencies {
         version { strictly("1.6.1") }
     }
 }
-
+val composePackage = extra["packageNameSpace"].toString()
 compose.desktop {
     application {
         mainClass = "MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = extra["packageNameSpace"].toString()
+            packageName = composePackage
             packageVersion = "1.0.0"
 
             linux {
