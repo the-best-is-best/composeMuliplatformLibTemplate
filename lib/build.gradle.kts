@@ -101,6 +101,7 @@ signing {
     sign(publishing.publications)
 }
 
+val packageNameSpace = extra["packageNameSpace"].toString()
 
 kotlin {
     jvmToolchain(17)
@@ -121,14 +122,13 @@ kotlin {
         browser()
         binaries.executable()
     }
-
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = extra["packageNameSpace"].toString()
+            baseName = packageNameSpace
             isStatic = true
         }
     }
@@ -194,14 +194,13 @@ dependencies {
         version { strictly("1.6.1") }
     }
 }
-val composePackage = extra["packageNameSpace"].toString()
 compose.desktop {
     application {
         mainClass = "MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = composePackage
+            packageName = packageNameSpace
             packageVersion = "1.0.0"
 
             linux {
